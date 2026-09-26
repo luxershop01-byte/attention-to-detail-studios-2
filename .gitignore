@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw video source footage — too large for git, not to be committed
+/raw-footage/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

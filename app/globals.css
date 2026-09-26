@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,30 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Mobile browser chrome (address bar) resizes the visual viewport as the user
+ * scrolls, so a static `100vh` drifts out of sync with `window.innerHeight`
+ * mid-scroll. `dvh` tracks the live viewport instead. The plain `vh` line
+ * stays first as a fallback for browsers that don't support `dvh` — if a
+ * browser doesn't understand a unit, it ignores that whole declaration and
+ * keeps the previous one.
+ */
+.h-viewport {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.scroll-height {
+  height: calc(var(--scroll-vh, 300) * 1vh);
+  height: calc(var(--scroll-vh, 300) * 1dvh);
 }
